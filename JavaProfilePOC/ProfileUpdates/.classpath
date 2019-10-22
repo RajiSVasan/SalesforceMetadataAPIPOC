@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="lib" path="/Users/z0019cp/Downloads/jackson-core-asl-1.9.13.jar">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/Users/z0019cp/Downloads/jackson-mapper-asl-1.9.13.jar">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/Users/z0019cp/Downloads/js-1.7R2.jar">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/Users/z0019cp/Downloads/ST4-4.0.7.jar">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/Users/z0019cp/Downloads/commons-beanutils-1.9.3.jar">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/Users/z0019cp/workfolder/JavaFiles/enterprise.jar"/>
+	<classpathentry kind="lib" path="/Users/z0019cp/workfolder/JavaFiles/metadata.jar"/>
+	<classpathentry kind="lib" path="/Users/z0019cp/workfolder/JavaFiles/partner.jar"/>
+	<classpathentry kind="lib" path="/Users/z0019cp/workfolder/JavaFiles/force-wsc-46.1.0.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

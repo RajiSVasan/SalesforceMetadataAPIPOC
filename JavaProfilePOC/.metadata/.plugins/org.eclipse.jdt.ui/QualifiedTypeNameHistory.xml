@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="com.sforce.soap.partner.PartnerConnection"/>
+<fullyQualifiedTypeName name="sun.jvm.hotspot.debugger.ReadResult"/>
+<fullyQualifiedTypeName name="com.sforce.soap.metadata.Metadata"/>
+<fullyQualifiedTypeName name="com.sforce.soap.metadata.CustomObject"/>
+<fullyQualifiedTypeName name="com.sforce.soap.metadata.DeploymentStatus"/>
+<fullyQualifiedTypeName name="com.sforce.soap.metadata.SharingModel"/>
+<fullyQualifiedTypeName name="com.sforce.soap.metadata.CustomField"/>
+<fullyQualifiedTypeName name="com.sforce.soap.metadata.FieldType"/>
+<fullyQualifiedTypeName name="com.sforce.soap.partner.SaveResult"/>
+<fullyQualifiedTypeName name="com.sforce.ws.ConnectionException"/>
+<fullyQualifiedTypeName name="com.sforce.ws.ConnectorConfig"/>
+<fullyQualifiedTypeName name="com.sforce.soap.metadata.ProfileLoginIpRange"/>
+<fullyQualifiedTypeName name="com.sforce.soap.metadata.Profile"/>
+<fullyQualifiedTypeName name="com.sforce.soap.metadata.ListMetadataQuery"/>
+<fullyQualifiedTypeName name="com.sforce.soap.metadata.FileProperties"/>
+<fullyQualifiedTypeName name="com.sforce.soap.metadata.ReadResult"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="com.sun.tools.javac.util.List"/>
+<fullyQualifiedTypeName name="java.util.List"/>
+</qualifiedTypeNameHistroy>

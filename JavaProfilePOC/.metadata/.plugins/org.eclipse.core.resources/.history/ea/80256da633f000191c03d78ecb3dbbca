@@ -1,0 +1,51 @@
+package profile;
+
+import com.sforce.soap.metadata.Metadata;
+import com.sforce.soap.metadata.MetadataConnection;
+import com.sforce.soap.metadata.Profile;
+import com.sforce.soap.metadata.ProfileLoginIpRange;
+import com.sforce.soap.metadata.UpsertResult;
+import com.sforce.ws.ConnectionException;
+
+public class UpdateIPRangeInProfile {
+	public static void main(String[] args) throws ConnectionException {
+
+		String[][] ranges = { { "3.0.0.0", "2.255.255.255" }, { "5.0.0.0", "4.255.255.255" } };
+		String profileName = "TestIPRangeUpdates";
+		MetadataConnection metadataConnection = MetadataLoginUtility.login();
+		try {
+			ProfileLoginIpRange[] loginIpRanges = new ProfileLoginIpRange[ranges.length];
+
+			for (int i = 0; i < ranges.length; i++) {
+				loginIpRanges[i] = new ProfileLoginIpRange();
+				loginIpRanges[i].setStartAddress(ranges[i][0]);
+				loginIpRanges[i].setEndAddress(ranges[i][1]);
+			}
+
+			Profile profile = new Profile();
+			profile.setLoginIpRanges(loginIpRanges);
+			profile.setFullName(profileName);
+			
+			UpsertResult[] saveResults = metadataConnection
+					.upsertMetadata(new Metadata[] { profile });
+
+			/*com.sforce.soap.metadata.SaveResult[] results = metadataConnection
+					.updateMetadata(new Metadata[] { profile });*/
+
+			for (com.sforce.soap.metadata.UpsertResult r : saveResults) {
+				if (r.isSuccess()) {
+					System.out.println("Updated profile: " + r.getFullName());
+				} else {
+					System.out.println("Errors were encountered while updating profile " + r.getFullName());
+					for (com.sforce.soap.metadata.Error e : r.getErrors()) {
+						System.out.println("Error message: " + e.getMessage());
+						System.out.println("Status code: " + e.getStatusCode());
+					}
+				}
+
+			}
+		} catch (ConnectionException ce) {
+			ce.printStackTrace();
+		}
+	}
+}

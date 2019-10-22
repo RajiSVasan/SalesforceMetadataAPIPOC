@@ -1,0 +1,60 @@
+package profile;
+
+import com.sforce.soap.metadata.CustomField;
+import com.sforce.soap.metadata.CustomObject;
+import com.sforce.soap.metadata.DeploymentStatus;
+import com.sforce.soap.metadata.FieldType;
+import com.sforce.soap.metadata.Metadata;
+import com.sforce.soap.metadata.MetadataConnection;
+import com.sforce.soap.metadata.SharingModel;
+import com.sforce.ws.ConnectionException;
+
+public class UpdateIPRangeInProfile {
+	  public static void main(String[] args) throws ConnectionException {
+		  
+		  String[][] ranges = { 
+		     { "1.0.0.0", "1.255.255.255" }, 
+			     { "3.0.0.0", "3.255.255.255" } 
+			};
+		    MetadataConnection metadataConnection = MetadataLoginUtility.login();
+		    try {
+		        ProfileLoginIpRange[] loginIpRanges = new ProfileLoginIpRange[ranges.length];
+
+		        for (int i = 0; i < ranges.length; i++) {
+		            loginIpRanges[i] = new ProfileLoginIpRange();
+		            loginIpRanges[i].setStartAddress(ranges[i][0]);
+		            loginIpRanges[i].setEndAddress(ranges[i][1]);
+		        }
+
+		        Profile profile = new Profile();
+		        profile.setLoginIpRanges(loginIpRanges);
+		        profile.setFullName(profileName);
+
+		        UpdateMetadata updateMetadata = new UpdateMetadata();
+		        updateMetadata.setMetadata(profile);
+		        updateMetadata.setCurrentName(profileName);
+
+		        AsyncResult[] ars = metadataConnection
+		                .update(new UpdateMetadata[] { updateMetadata });
+		        AsyncResult asyncResult = ars[0];
+
+		        long waitTimeMilliSecs = 1000;
+		        while (!asyncResult.isDone() && waitTimeMilliSecs <= longestWaitMilliSecs) {
+		            Thread.sleep(waitTimeMilliSecs);
+
+		            waitTimeMilliSecs *= 2;
+		            asyncResult = metadataConnection
+		                    .checkStatus(new String[] { asyncResult.getId() })[0];
+		            System.out.println("Status is: " + asyncResult.getState());
+		        }
+
+		        if (asyncResult.getState() != AsyncRequestState.Completed) {
+		            System.out.println(asyncResult.getStatusCode() + " msg: "
+		                    + asyncResult.getMessage());
+		        }
+		    } catch (InterruptedException ie) {
+		        ie.printStackTrace();
+		    } catch (ConnectionException ce) {
+		        ce.printStackTrace();
+		    }
+		}
